@@ -1,978 +1,250 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio</title>
-  <style>
-    /* =====================================================
-       VARIÁVEIS GLOBAIS — edite aqui para mudar as cores
-       ===================================================== */
-    :root {
-      --ouro:       #c8973a;
-      --ouro-claro: #e8c472;
-      --ouro-escuro:#8a6220;
-      --preto:      #0d0d0d;
-      --fundo:      #111111;
-      --fundo-card: #1a1a1a;
-      --fundo-card2:#161616;
-      --borda:      #3a2e10;
-      --texto:      #d4b87a;
-      --texto-claro:#f0dfa0;
-      --vermelho:   #6b1a1a;
-      --vermelho-borda: #8b2020;
-    }
-
-    /* =====================================================
-       RESET E BASE
-       ===================================================== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: var(--preto);
-      color: var(--texto);
-      font-family: 'Georgia', serif;
-      line-height: 1.6;
-    }
-
-    /* Divisor dourado decorativo usado nos títulos */
-    .divisor {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--ouro);
-      font-size: 14px;
-    }
-    .divisor::before,
-    .divisor::after {
-      content: '';
-      display: inline-block;
-      width: 30px;
-      height: 1px;
-      background: var(--ouro);
-    }
-
-    /* Título de seção padrão */
-    .titulo-secao {
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      color: var(--ouro-claro);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-    .titulo-secao::before,
-    .titulo-secao::after {
-      content: '⬥';
-      font-size: 12px;
-      color: var(--ouro-escuro);
-    }
-    /* Linha horizontal decorativa ao lado do título */
-    .titulo-linha {
-      display: inline-block;
-      width: 40px;
-      height: 1px;
-      background: var(--ouro-escuro);
-      vertical-align: middle;
-    }
-
-    /* =====================================================
-       NAVEGAÇÃO (TOPO)
-       Para mudar os itens do menu, edite o <ul> em HTML
-       ===================================================== */
-    nav {
-      background: rgba(10, 8, 3, 0.97);
-      border-bottom: 1px solid var(--borda);
-      padding: 14px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    /* Logo PB no canto esquerdo */
-    .nav-logo {
-      border: 1px solid var(--ouro-escuro);
-      color: var(--ouro);
-      font-size: 16px;
-      font-weight: bold;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 6px;
-      align-items: center;
-    }
-
-    nav ul li {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Losango decorativo entre itens */
-    nav ul li:not(:last-child)::after {
-      content: '◆';
-      font-size: 6px;
-      color: var(--ouro-escuro);
-    }
-
-    nav ul li a {
-      color: var(--ouro);
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    nav ul li a:hover { color: var(--ouro-claro); }
-
-    /* =====================================================
-       HERO / BANNER PRINCIPAL
-       — Troque o texto "NOME" e a frase abaixo
-       — Troque o src da imagem de fundo (background-image)
-       ===================================================== */
-    #hero {
-      position: relative;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 60px;
-      /* 👇 TROQUE ESTA URL pela URL da sua imagem de fundo */
-      background-size: cover;
-      background-position: center top;
-      overflow: hidden;
-    }
-
-    /* Overlay escuro para legibilidade */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.3) 100%);
-    }
-
-    .hero-conteudo { position: relative; z-index: 2; max-width: 420px; 
-  }
-    .hero-foto {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;           /* circular; mude para 4px para quadrada */
-      object-fit: cover;            /* preenche o círculo sem distorcer */
-      border: 3px solid var(--ouro);
-      box-shadow: 0 0 20px rgba(200, 151, 58, 0.4);
-      flex-shrink: 0;               /* impede que a foto encolha */
-    }
-
-    /* 👇 SEU NOME APARECE AQUI — edite o texto em HTML */
-    .hero-nome {
-      font-size: 80px;
-      font-weight: 900;
-      color: var(--ouro);
-      line-height: 1;
-      text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
-      font-style: italic;
-      letter-spacing: -1px;
-    }
-
-    /* Linha dourada decorativa sob o nome */
-    .hero-divider {
-      width: 160px;
-      height: 2px;
-      background: linear-gradient(to right, var(--ouro), transparent);
-      margin: 14px 0;
-    }
-
-    /* 👇 SUA FRASE/SLOGAN — edite o texto em HTML */
-    .hero-frase {
-      color: var(--texto-claro);
-      font-size: 17px;
-      font-style: italic;
-      letter-spacing: 1px;
-    }
-
-    /* =====================================================
-       GRID PRINCIPAL — "Sobre Mim" e "Curiosidades"
-       ===================================================== */
-    .grid-topo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      padding: 24px 24px 0;
-    }
-
-    /* Card reutilizável com borda dourada */
-    .card {
-      background: var(--fundo-card);
-      border: 1px solid var(--borda);
-      border-radius: 4px;
-      padding: 28px;
-    }
-
-    /* =====================================================
-       SOBRE MIM
-       — Edite os textos dos <textarea> em HTML
-       ===================================================== */
-    #sobre { }
-
-    .campo-label {
-      font-size: 12px;
-      color: var(--ouro-escuro);
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-
-    /* Campos de texto editáveis diretamente no site */
-    .campo-texto {
-      width: 100%;
-      background: #0e0e0e;
-      border: 1px solid var(--borda);
-      color: var(--texto-claro);
-      padding: 10px 14px;
-      font-family: inherit;
-      font-size: 14px;
-      resize: vertical;
-      min-height: 70px;
-      border-radius: 2px;
-      outline: none;
-      margin-bottom: 16px;
-      transition: border-color 0.2s;
-    }
-
-    .campo-texto:focus { border-color: var(--ouro-escuro); }
-
-    /* =====================================================
-       CURIOSIDADES
-       — Edite os textos dos <li> em HTML
-       ===================================================== */
-    #curiosidades ul {
-      list-style: none;
-      margin-bottom: 20px;
-    }
-
-    #curiosidades ul li {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--borda);
-      font-size: 14px;
-      color: var(--texto-claro);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    #curiosidades ul li::before {
-      content: '◆';
-      color: var(--ouro);
-      font-size: 10px;
-      flex-shrink: 0;
-    }
-
-    /* Botão interativo de curiosidades */
-    #btn-curiosidade {
-      display: block;
-      margin: 0 auto;
-      background: transparent;
-      border: 1px solid var(--ouro);
-      color: var(--ouro);
-      padding: 10px 28px;
-      font-family: inherit;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    #btn-curiosidade:hover {
-      background: var(--ouro);
-      color: var(--preto);
-    }
-
-    /* Painel oculto que aparece ao clicar no botão */
-    #painel-extra {
-      display: none;
-      margin-top: 16px;
-      background: #0e0e0e;
-      border: 1px solid var(--borda);
-      padding: 14px;
-      font-size: 13px;
-      color: var(--texto-claro);
-      border-radius: 2px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* =====================================================
-       HOBBIES
-       — Para ADICIONAR ou REMOVER um hobby, copie/apague
-         um <div class="hobby-card"> em HTML
-       — Troque o ícone (☆) pelo emoji ou símbolo desejado
-       ===================================================== */
-    #hobbies {
-      margin: 16px 24px 0;
-    }
-
-    .hobbies-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    .hobby-card {
-      background: var(--fundo-card);
-      border: 1px solid var(--borda);
-      border-radius: 4px;
-      padding: 24px 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .hobby-card:hover {
-      border-color: var(--ouro);
-      transform: translateY(-3px);
-    }
-
-    /* Ícone circular do hobby */
-    .hobby-icone {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--ouro-escuro);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 14px;
-      font-size: 22px;
-      color: var(--ouro);
-    }
-
-    .hobby-nome {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--ouro);
-      text-transform: uppercase;
-    }
-
-    /* =====================================================
-       GRID INFERIOR — "Disciplinas" e "Projetos"
-       ===================================================== */
-    .grid-baixo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      padding: 16px 24px 0;
-    }
-
-    /* =====================================================
-       DISCIPLINAS FAVORITAS
-       — Para adicionar linhas, copie um <tr> dentro do <tbody>
-       — Preencha <td> com disciplina e motivo
-       ===================================================== */
-    #disciplinas table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    #disciplinas thead th {
-      background: var(--vermelho);
-      color: var(--ouro-claro);
-      padding: 10px 14px;
-      text-align: left;
-      letter-spacing: 1px;
-      font-size: 12px;
-      text-transform: uppercase;
-      border: 1px solid var(--vermelho-borda);
-    }
-
-    #disciplinas tbody tr {
-      border-bottom: 1px solid var(--borda);
-      transition: background 0.15s;
-    }
-
-    #disciplinas tbody tr:hover { background: #1e1a0e; }
-
-    #disciplinas tbody td {
-      padding: 9px 14px;
-      color: var(--texto-claro);
-    }
-
-    /* =====================================================
-       MEUS PROJETOS
-       — Para cada projeto, edite o título, descrição e link
-       — Troque o src da <img> pela imagem do seu projeto
-       — Para ADICIONAR projeto, copie um <div class="projeto-item">
-       ===================================================== */
-    .projetos-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .projeto-item { }
-
-    .projeto-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--ouro);
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    /* Área da imagem do projeto (quadrado cinza por padrão) */
-    .projeto-img {
-      width: 100%;
-      height: 130px;
-      background: #1e1e1e;
-      border: 1px solid var(--borda);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #444;
-      font-size: 11px;
-      margin-bottom: 10px;
-      overflow: hidden;
-      padding: 8px;
-    }
-
-    /* object-fit: contain garante que a imagem apareça inteira sem corte */
-    .projeto-img img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .projeto-titulo {
-      text-align: center;
-      font-size: 13px;
-      color: var(--texto-claro);
-      margin-bottom: 8px;
-    }
-
-    .projeto-desc {
-      width: 100%;
-      background: #0e0e0e;
-      border: 1px solid var(--borda);
-      color: var(--texto);
-      padding: 8px 10px;
-      font-family: inherit;
-      font-size: 12px;
-      resize: vertical;
-      min-height: 50px;
-      border-radius: 2px;
-      outline: none;
-      margin-bottom: 8px;
-    }
-
-    /* Botão de link do projeto */
-    .projeto-link {
-      display: block;
-      text-align: center;
-      background: var(--vermelho);
-      border: 1px solid var(--vermelho-borda);
-      color: var(--ouro-claro);
-      padding: 8px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s;
-      cursor: pointer;
-    }
-
-    .projeto-link:hover { background: #8b2424; }
-
-    /* =====================================================
-       MINHA GANGUE DIGITAL
-       — Para TROCAR os membros, edite cada <div class="membro">
-       — Troque o ícone (SVG inline), o nome e a descrição
-       ===================================================== */
-    #gangue {
-      margin: 16px 24px 0;
-    }
-
-    .gangue-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      text-align: center;
-    }
-
-    .membro { }
-
-    .membro-icone {
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      color: var(--ouro);
-    }
-
-    .membro-icone svg { width: 44px; height: 44px; stroke: var(--ouro); fill: none; stroke-width: 1.5; }
-
-    .membro-nome {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--ouro);
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .membro-desc {
-      font-size: 12px;
-      color: var(--ouro-escuro);
-      margin-bottom: 10px;
-    }
-
-    /* Campo editável para o nome/link do membro */
-    .membro-campo {
-      width: 100%;
-      background: #0e0e0e;
-      border: 1px solid var(--borda);
-      color: var(--texto);
-      padding: 6px 8px;
-      font-family: inherit;
-      font-size: 12px;
-      border-radius: 2px;
-      outline: none;
-      text-align: center;
-    }
-
-    /* =====================================================
-       RODAPÉ
-       ===================================================== */
-    footer {
-      margin-top: 24px;
-      background: #0a0800;
-      border-top: 1px solid var(--borda);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-esq, .footer-dir {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-icon {
-      color: var(--ouro);
-      font-size: 18px;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-icon:hover { color: var(--ouro-claro); }
-
-    /* Campo de e-mail no rodapé */
-    .footer-campo {
-      background: #0e0e0e;
-      border: 1px solid var(--borda);
-      color: var(--texto);
-      padding: 6px 12px;
-      font-family: inherit;
-      font-size: 12px;
-      border-radius: 2px;
-      outline: none;
-      width: 160px;
-    }
-
-    .footer-logo {
-      text-align: center;
-      color: var(--ouro);
-      font-size: 20px;
-      font-weight: bold;
-      border: 1px solid var(--ouro-escuro);
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* =====================================================
-       RESPONSIVIDADE — telas menores
-       ===================================================== */
-    @media (max-width: 900px) {
-      .grid-topo, .grid-baixo { grid-template-columns: 1fr; }
-      .hobbies-grid { grid-template-columns: repeat(3, 1fr); }
-      .gangue-grid  { grid-template-columns: repeat(3, 1fr); }
-      .hero-nome    { font-size: 52px; }
-      nav ul        { gap: 4px; }
-      nav ul li a   { font-size: 11px; }
-    }
-
-    @media (max-width: 600px) {
-      .hobbies-grid { grid-template-columns: repeat(2, 1fr); }
-      .gangue-grid  { grid-template-columns: repeat(2, 1fr); }
-      .projetos-grid { grid-template-columns: 1fr; }
-      .hero-nome    { font-size: 40px; }
-      nav { flex-direction: column; gap: 12px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davi Berbek - Portfólio Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- =====================================================
-       NAVEGAÇÃO
-       Para adicionar itens: copie um <li><a href="...">...</a></li>
-       Para mudar o destino: edite o href="#id-da-secao"
-       ===================================================== -->
-  <nav>
-    <div class="nav-logo">PB</div>
-    <ul>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#curiosidades">Curiosidades</a></li>
-      <li><a href="#hobbies">Hobbies</a></li>
-      <li><a href="#disciplinas">Disciplinas</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#gangue">Contato</a></li>
-    </ul>
-  </nav>
-
-  <!-- =====================================================
-       HERO — MUDE SEU NOME E FRASE AQUI
-       Para trocar a imagem de fundo, edite background-image
-       no CSS acima (seção #hero)
-       ===================================================== -->
-  <section id="hero">
-    <div class="hero-conteudo">
-      <!-- 👇 SUA FOTO — troque o src pela URL da sua foto -->
-      <img class="hero-foto"
-  src="/images/pernalonga.png"
-  alt="Minha foto"
->
-      <!-- 👇 SEU NOME -->
-      <h1 class="hero-nome">Davi Berbek</h1>
-      <div class="hero-divider"></div>
-      <!-- 👇 SUA FRASE FAVORITA / SLOGAN -->
-      <p class="hero-frase">O impossível é apenas questão de opinião</p>
-    </div>
-  </section>
-
-  <!-- =====================================================
-       GRID TOPO: SOBRE MIM + CURIOSIDADES
-       ===================================================== -->
-  <div class="grid-topo">
-
-    <!-- SOBRE MIM -->
-    <div class="card" id="sobre">
-      <h2 class="titulo-secao">Sobre Mim</h2>
-
-      <p class="campo-label">Parágrafo 1:</p>
-      <!-- 👇 ESCREVA SEU PRIMEIRO PARÁGRAFO AQUI -->
-      <textarea class="campo-texto" placeholder="Olá, meu nome é Davi Berbek, tenho 17 anos, moro em Araúcaria e sou estudante de ciência da computação."></textarea>
-
-      <p class="campo-label">Parágrafo 2:</p>
-      <!-- 👇 ESCREVA SEU SEGUNDO PARÁGRAFO AQUI -->
-      <textarea class="campo-texto" placeholder="Além de ser entusiasta de tecnologia e fánatico pelo meu time de futebol."></textarea>
-    </div>
-
-    <!-- CURIOSIDADES -->
-    <div class="card" id="curiosidades">
-      <h2 class="titulo-secao">Curiosidades</h2>
-
-      <!-- 👇 EDITE CADA <li> COM UMA CURIOSIDADE SUA -->
-      <ul>
-        <li>Tenho Heterocromia</li>
-        <li>Gosto muito de jogar CS2</li>
-        <li>Curto pescar</li>
-        <li>Amo fazer churrasco</li>
-        <li>Gosto de assistir meu time jogando (as vezes)</li>
-      </ul>
-
-      <!-- Botão que revela uma curiosidade extra -->
-      <button id="btn-curiosidade" onclick="toggleExtra()">Curiosidade Extra</button>
-
-      <!-- 👇 TEXTO SECRETO QUE APARECE AO CLICAR NO BOTÃO -->
-      <div id="painel-extra">
-        🎭 Curiosidade bônus: Tenho uma pastora belga chamada Lindy!
-      </div>
-    </div>
-
-  </div><!-- fim .grid-topo -->
-
-  <!-- =====================================================
-       HOBBIES
-       Para ADICIONAR: copie um <div class="hobby-card">
-       Para REMOVER: apague um <div class="hobby-card">
-       Para trocar o ícone: coloque qualquer emoji no .hobby-icone
-       ===================================================== -->
-  <div class="card" id="hobbies" style="margin: 16px 24px 0;">
-    <h2 class="titulo-secao">Hobbies</h2>
-    <div class="hobbies-grid">
-
-      <!-- HOBBY 1 — troque o ícone e o nome -->
-      <div class="hobby-card">
-        <div class="hobby-icone">🎮</div>
-        <div class="hobby-nome">Jogar Video Games</div>
-      </div>
-
-      <!-- HOBBY 2 -->
-      <div class="hobby-card">
-        <div class="hobby-icone">⚽</div>
-        <div class="hobby-nome">Assistir futebol</div>
-      </div>
-
-      <!-- HOBBY 3 -->
-      <div class="hobby-card">
-        <div class="hobby-icone">🎣</div>
-        <div class="hobby-nome">Pescar</div>
-      </div>
-
-      <!-- HOBBY 4 -->
-      <div class="hobby-card">
-        <div class="hobby-icone">🏋️</div>
-        <div class="hobby-nome">Academia</div>
-      </div>
-
-      <!-- HOBBY 5 -->
-      <div class="hobby-card">
-        <div class="hobby-icone"> ☆ </div>
-        <div class="hobby-nome">Churrasco</div>
-      </div>
-
-    </div>
-  </div><!-- fim #hobbies -->
-
-  <!-- =====================================================
-       GRID BAIXO: DISCIPLINAS + PROJETOS
-       ===================================================== -->
-  <div class="grid-baixo">
-
-    <!-- DISCIPLINAS FAVORITAS -->
-    <div class="card" id="disciplinas">
-      <h2 class="titulo-secao">Disciplinas Favoritas</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Disciplina</th>
-            <th>Por que gosto?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- 👇 Edite cada linha com sua disciplina favorita -->
-          <tr>
-            <td>Matemática</td>
-            <td>Matemática é uma linguagem universal que permite compreender o mundo que vivemos</td>
-          </tr>
-          <tr>
-            <td>História</td>
-            <td>Gosto de estudar o passado da nossa civilização e como o ser humano evoluiu ao longo do tempo</td>
-          </tr>
-          <tr>
-            <td>História</td>
-            <td>Gosto de estudar o passado da nossa civilização e como o ser humano evoluiu ao longo do tempo</td>
-          </tr>
-          <tr>
-            <td>Geografia</td>
-            <td>Quero conhecer diferentes culturas e paisagens ao redor do mundo</td>
-          </tr>
-          </tr>
-          <tr>
-            <td>Física</td>
-            <td>Me interessa entender os princípios que regem o universo</td>
-          </tr>
-          <tr>
-            <td>Química</td>
-            <td>Gosto de descobrir como os elementos se combinam para criar novas substâncias</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- MEUS PROJETOS -->
-    <div class="card" id="projetos">
-      <h2 class="titulo-secao">Meus Projetos</h2>
-      <div class="projetos-grid">
-
-        <!-- PROJETO 1 — edite título, descrição e link -->
-        <div class="projeto-item">
-          <p class="projeto-label">Projeto Construct</p>
-          <!-- Para adicionar imagem: coloque <img src="URL" alt=""> dentro da .projeto-img -->
-          <div class="projeto-img"><img src="/images/og-image-promo.png" alt="Imagem Construct"></div>
-          <p class="projeto-titulo">Letheus</p>
-          <textarea class="projeto-desc" placeholder="Jogo futurista com atmosfera cyberpunk, cujo objetivo seja de recuperar suas memórias"></textarea>
-          <!-- 👇 Troque o href pelo link real do seu projeto -->
-          <a class="projeto-link" href="#" target="_blank">Link do Projeto</a>
+    <header class="navbar">
+        <div class="logo-container">
+            <div class="logo-badge">PB</div>
         </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#sobre">SOBRE</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#curiosidades">CURIOSIDADES</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#hobbies">HOBBIES</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#disciplinas">DISCIPLINAS</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#projetos">PROJETOS</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- PROJETO 2 -->
-        <div class="projeto-item">
-          <p class="projeto-label">Projeto Processing</p>
-          <div class="projeto-img"><img src="images/processing.png" alt="Imagem Processing"></div>
-          <p class="projeto-titulo">Título do Projeto</p>
-          <textarea class="projeto-desc" placeholder="Aplicativo que explica um pouco mais a respeito de linux e principalmente Ubuntu"></textarea>
-          <!-- 👇 Troque o href pelo link real do seu projeto -->
-          <a class="projeto-link" href="https://github.com/0Londero/processing_exploring_ubuntu" target="_blank">Link do Projeto</a>
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+              <div class="hero-avatar-wrapper">
+        <label for="avatar-upload" class="hero-avatar-circle" title="Clique para adicionar foto">
+            <img id="avatar-preview" src="" alt="" class="avatar-img" style="display:none;">
+            <span class="hero-avatar-placeholder" id="avatar-placeholder">
+                <i class="fa-solid fa-user"></i>
+                <span class="avatar-hint">Adicionar foto</span>
+            </span>
+        </label>
+        <input type="file" id="avatar-upload" accept="image/*" style="display:none;">
+    </div>
+                <h1 class="hero-title">Davi Berbek</h1>
+                <div class="hero-decorator">
+                    <span class="line"></span>
+                    <span class="diamond">♦</span>
+                    <span class="line"></span>
+                </div>
+                <p class="hero-subtitle">"O impossível é só questão de opinião."</p>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <main class="main-wrapper grid-2">
+        
+        <section id="sobre" class="content-box">
+            <h2 class="box-title">♦ SOBRE MIM ♦</h2>
+            <div class="inner-field">
+                <span class="field-label">Parágrafo 1:</span>
+                <p class="field-text text-justify">Sou Davi Berbek, entusiasta de tecnologia e estudante de ciência da computação na PUCPR.</p>
+            </div>
+            <div class="inner-field mt-25">
+                <span class="field-label">Parágrafo 2:</span>
+                <p class="field-text text-justify"> Adoro explorar novas tecnologias e no tempo livre, jogar counter-strike 2 e fazer churrasco.
+        </section>
+
+        <section id="curiosidades" class="content-box flex-between">
+            <div>
+                <h2 class="box-title">♦ CURIOSIDADES ♦</h2>
+                <ul class="custom-list">
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 1°: Tenho heterocromia</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 2°: Gosto de pescar</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 3°: Tenho uma pastora belga chamada Lindy</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 4°: Torcedor fanático do Clube Athletico Paranaense</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 5°: Moro em Araúcaria</li>
+                </ul>
+            </div>
+            <button id="btn-interativo" class="btn-gold-action">BOTÃO INTERATIVO</button>
+        </section>
+
+    </main>
+
+    <section id="hobbies" class="main-wrapper">
+        <div class="center-title-wrapper">
+            <h2 class="global-title">♦ HOBBIES ♦</h2>
+        </div>
+        <div class="grid-5">
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">Pescaria</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">Churrasco</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">Jogar Counter-Strike 2</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">Assistir filmes (principalmente de guerra)</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">Academia</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-wrapper grid-2">
+        
+        <section id="disciplinas" class="content-box">
+            <h2 class="box-title">♦ DISCIPLINAS FAVORITAS ♦</h2>
+            <table class="gold-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">DISCIPLINA</th>
+                        <th class="text-center">POR QUE GOSTO?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="font-bold">Sistemas ciberfísicos</td>
+                        <td>Por explicar um pouco mais sobre como as coisas realmente funcionam.</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold">Raciocínio Algorítmico</td>
+                        <td>Por conseguir aprender a fazer coisas que eu jamais imaginaria que seria capaz.</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold">Filosofia</td>
+                        <td>Mãe de todas as outras ciências, responsável por questionar o mundo ao nosso redor.</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="projetos" class="content-box">
+            <h2 class="box-title">♦ MEUS PROJETOS ♦</h2>
+            <div class="grid-2-internal">
+                
+                <div class="project-item">
+                    <span class="project-category">PROJETO CONSTRUCT</span>
+                    <div class="project-preview">
+                        <img src="/images/og-image-promo.png" alt="Letheus" class="project-img">
+                    </div>
+                    <h3 class="project-title-text">Letheus</h3>
+                    <p class="project-description">Um jogo de plataforma cujo objetivo é recuperar a memória perdida.</p>
+                    <a href="https://www.construct.net/en/free-online-games/lunae-solis-85527/play" target="_blank" class="btn-maroon">LINK DO PROJETO</a>
+                </div>
+
+                <div class="project-item">
+                    <span class="project-category">PROJETO PROCESSING</span>
+                    <div class="project-preview">
+                        <img src="/images/aplicativo.jpeg" alt="Aplicativo Explorando o Ubuntu" class="project-img">
+                    </div>
+                    <h3 class="project-title-text">Aplicativo Explorando o Ubuntu</h3>
+                    <p class="project-description">Aplicativo interativo que explica um pouco mais a respeito do linux, focando principalmente no ubuntu.</p>
+                    <a href="https://github.com/0Londero/processing_exploring_ubuntu" target="_blank" class="btn-maroon">LINK DO PROJETO</a>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
-  </div><!-- fim .grid-baixo -->
-
-  <!-- =====================================================
-       MINHA GANGUE DIGITAL
-       Para TROCAR um membro: edite o SVG, o nome e a descrição
-       Para ADICIONAR: copie um <div class="membro">
-       ===================================================== -->
-  <div class="card" id="gangue" style="margin: 16px 24px 0;">
-    <h2 class="titulo-secao">Minha Gangue Digital</h2>
-    <div class="gangue-grid">
-
-      <!-- MEMBRO 1 — Perna Longa (Criatividade) -->
-      <div class="membro">
-        <div class="membro-icone">
-          <!-- Ícone: cartola -->
-          <svg viewBox="0 0 24 24"><path d="M4 18h16M6 18V12l6-8 6 8v6"/><rect x="3" y="18" width="18" height="2" rx="1"/></svg>
+    <section id="gangue" class="gang-section">
+        <div class="gang-overlay">
+            <div class="main-wrapper">
+                <div class="center-title-wrapper">
+                    <h2 class="global-title">♦ MINHA GANGUE DIGITAL ♦</h2>
+                </div>
+                <div class="grid-5">
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-hat-cowboy-side"></i></div>
+                        <h3>PERNA LONGA</h3>
+                        <span class="gang-role">Criatividade</span>
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-feather"></i></div>
+                        <h3>PICA-PAU</h3>
+                        <span class="gang-role">Humor</span>
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-hat-wizard"></i></div>
+                        <h3>PATOLINO</h3>
+                        <span class="gang-role">Persistência</span>
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-cat"></i></div>
+                        <h3>TOM</h3>
+                        <span class="gang-role">Trabalho em Equipe</span>
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-gem"></i></div>
+                        <h3>PANTERA COR-DE-ROSA</h3>
+                        <span class="gang-role">Elegância no Design</span>
+                        <div class="status-indicator"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="membro-nome">Perna Longa</p>
-        <p class="membro-desc">Criatividade</p>
-        <!-- 👇 Campo para colocar o nome/usuário desse membro -->
-        <input class="membro-campo" type="text" placeholder="Davi Berbek" />
-      </div>
+    </section>
 
-      <!-- MEMBRO 2 — Pica-Pau (Humor) -->
-      <div class="membro">
-        <div class="membro-icone">
-          <!-- Ícone: pena -->
-          <svg viewBox="0 0 24 24"><path d="M20 4C14 4 6 10 4 20c2-4 5-6 8-7-3 2-4 5-4 7 6-2 10-8 12-16z"/></svg>
+    <footer id="contato" class="main-footer">
+        <div class="footer-segment text-left">
+            <i class="fa-regular fa-envelope footer-mail-icon"></i>
+            <input type="email" class="footer-email-box" value="DaviBerbek@outlook.com" readonly title="Email Pessoal">
         </div>
-        <p class="membro-nome">Pica-Pau</p>
-        <p class="membro-desc">Humor</p>
-        <input class="membro-campo" type="text" placeholder="@usuário" />
-      </div>
-
-      <!-- MEMBRO 3 — Patolino (Persistência) -->
-      <div class="membro">
-        <div class="membro-icone">
-          <!-- Ícone: chapéu coco -->
-          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="9" rx="7" ry="5"/><path d="M5 9v3a7 3 0 0014 0V9"/><line x1="3" y1="14" x2="21" y2="14"/></svg>
+        
+        <div class="footer-segment text-center">
+            <div class="logo-badge-footer">PB</div>
         </div>
-        <p class="membro-nome">Patolino</p>
-        <p class="membro-desc">Persistência</p>
-        <input class="membro-campo" type="text" placeholder="@usuário" />
-      </div>
-
-      <!-- MEMBRO 4 — Tom (Trabalho em Equipe) -->
-      <div class="membro">
-        <div class="membro-icone">
-          <!-- Ícone: orelhas de gato -->
-          <svg viewBox="0 0 24 24"><path d="M4 20c0-4 1-8 4-10L4 4l4 4a8 8 0 018 0l4-4-4 6c3 2 4 6 4 10"/></svg>
+        
+        <div class="footer-segment text-right">
+            <a href="https://github.com/DaviBerbek" target="_blank" class="footer-social"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/davi-berbek/" target="_blank" class="footer-social"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/davi_berbek?igsh=OHlxeWk4ejBiOGhs" target="_blank" class="footer-social"><i class="fa-brands fa-instagram"></i></a>
+            
+            <div id="easter-egg-btn" class="footer-extra-box" title="PUCPR: davi.berbek@pucpr.edu.br"></div>
         </div>
-        <p class="membro-nome">Tom</p>
-        <p class="membro-desc">Trabalho em Equipe</p>
-        <input class="membro-campo" type="text" placeholder="@usuário" />
-      </div>
+    </footer>
 
-      <!-- MEMBRO 5 — Pantera Cor-de-Rosa (Elegância) -->
-      <div class="membro">
-        <div class="membro-icone">
-          <!-- Ícone: bengala -->
-          <svg viewBox="0 0 24 24"><path d="M7 20c0-6 4-14 10-16"/><path d="M7 20c-2 0-3-1-3-2s1-2 3-2"/></svg>
+    <div id="easter-egg-modal" class="modal-overlay">
+        <div class="modal-container">
+            <span id="close-modal" class="modal-close-btn">&times;</span>
+            <img src="27079-nerd.png" alt="Easter Egg - Nerd" class="modal-img">
         </div>
-        <p class="membro-nome">Pantera Cor-de-Rosa</p>
-        <p class="membro-desc">Elegância no Design</p>
-        <input class="membro-campo" type="text" placeholder="@usuário" />
-      </div>
-
-    </div>
-  </div><!-- fim #gangue -->
-
-  <!-- =====================================================
-       RODAPÉ
-       — Troque os href dos ícones sociais pelos seus perfis
-       — Edite o e-mail no campo de texto
-       ===================================================== -->
-  <footer>
-    <!-- E-mail à esquerda -->
-    <div class="footer-esq">
-      <span class="footer-icon">✉</span>
-      <!-- 👇 Preencha com seu e-mail -->
-      <input class="footer-campo" type="email" placeholder="DaviBerbek@outlook.com" />
     </div>
 
-    <!-- Logo central -->
-    <div class="footer-logo">PB</div>
-
-    <!-- Redes sociais à direita -->
-    <div class="footer-dir">
-      <!-- 👇 Troque os href pelos links das suas redes -->
-      <a class="footer-icon" href="https://github.com/DaviBerbek" target="_blank" title="GitHub">⌥</a>
-      <a class="footer-icon" href="https://linkedin.com/in/davi-berbek" target="_blank" title="LinkedIn">in</a>
-      <a class="footer-icon" href="https://instagram.com/davi_berbek/" target="_blank" title="Instagram">◎</a>
-      <input class="footer-campo" type="text" placeholder="DaviBerbek" />
-    </div>
-  </footer>
-
-  <!-- =====================================================
-       JAVASCRIPT
-       Funções interativas da página
-       ===================================================== -->
-  <script>
-    // -------------------------------------------------------
-    // toggleExtra()
-    // Mostra/esconde o painel de curiosidade bônus ao clicar
-    // no botão da seção Curiosidades
-    // -------------------------------------------------------
-    function toggleExtra() {
-      var painel = document.getElementById("painel-extra");
-      var btn    = document.getElementById("btn-curiosidade");
-
-      if (painel.style.display === "block") {
-        // Se já está visível, esconde
-        painel.style.display = "none";
-        btn.textContent = "Botão Interativo";
-      } else {
-        // Se está escondido, revela
-        painel.style.display = "block";
-        btn.textContent = "Esconder";
-      }
-    }
-
-    // -------------------------------------------------------
-    // Efeito de hover nas células da tabela de disciplinas
-    // Já funciona via CSS, mas aqui você pode adicionar
-    // lógica extra se quiser no futuro
-    // -------------------------------------------------------
-
-    // -------------------------------------------------------
-    // Scroll suave ao clicar nos links da navegação
-    // -------------------------------------------------------
-    var links = document.querySelectorAll("nav a");
-    for (var i = 0; i < links.length; i++) {
-      links[i].addEventListener("click", function(e) {
-        var alvo = document.querySelector(this.getAttribute("href"));
-        if (alvo) {
-          e.preventDefault();
-          alvo.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    }
-  </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
