@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[NOME COMPLETO] - Portfólio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <!-- MOLDE: Iniciais do seu nome, ex: "AB" para Ana Beatriz -->
+            <div class="logo-badge">[INICIAIS]</div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#sobre">SOBRE</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#curiosidades">CURIOSIDADES</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#hobbies">HOBBIES</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#disciplinas">DISCIPLINAS</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#projetos">PROJETOS</a></li>
+                <li class="separator">♦</li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <!-- MOLDE: Substitua "hero-bg.png" pela sua imagem de fundo (banner/wallpaper) em style.css -->
+        <div class="hero-overlay">
+            <div class="hero-content">
+
+                <!-- MOLDE: Foto ou avatar — clique no círculo para fazer upload -->
+                <div class="hero-avatar-wrapper">
+                    <label for="avatar-upload" class="hero-avatar-circle" title="Clique para adicionar foto">
+                        <img id="avatar-preview" src="" alt="" class="avatar-img" style="display:none;">
+                        <span class="hero-avatar-placeholder" id="avatar-placeholder">
+                            <i class="fa-solid fa-user"></i>
+                            <span class="avatar-hint">Sua foto aqui</span>
+                        </span>
+                    </label>
+                    <input type="file" id="avatar-upload" accept="image/*" style="display:none;">
+                </div>
+
+                <!-- MOLDE: Seu nome completo em maiúsculas -->
+                <h1 class="hero-title">[SEU NOME COMPLETO]</h1>
+
+                <div class="hero-decorator">
+                    <span class="line"></span>
+                    <span class="diamond">♦</span>
+                    <span class="line"></span>
+                </div>
+
+                <!-- MOLDE: Uma frase ou citação que te representa -->
+                <p class="hero-subtitle">"[Sua frase ou citação pessoal aqui]"</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-wrapper grid-2">
+
+        <section id="sobre" class="content-box">
+            <h2 class="box-title">♦ SOBRE MIM ♦</h2>
+
+            <!-- MOLDE: Primeiro parágrafo de apresentação pessoal -->
+            <div class="inner-field">
+                <span class="field-label">Parágrafo 1:</span>
+                <p class="field-text text-justify">[Escreva aqui um parágrafo sobre sua história, origens ou o que te motivou a chegar até onde está. Ex: desde criança gostava de X, o que me levou a descobrir Y...]</p>
+            </div>
+
+            <!-- MOLDE: Segundo parágrafo, focado em objetivos ou trajetória atual -->
+            <div class="inner-field mt-25">
+                <span class="field-label">Parágrafo 2:</span>
+                <p class="field-text text-justify">[Escreva aqui sobre seus objetivos, curso, faculdade ou área de atuação. Ex: ingressei no curso X na faculdade Y, e hoje busco Z...]</p>
+            </div>
+        </section>
+
+        <section id="curiosidades" class="content-box flex-between">
+            <div>
+                <h2 class="box-title">♦ CURIOSIDADES ♦</h2>
+                <ul class="custom-list">
+                    <!-- MOLDE: Liste de 3 a 6 curiosidades sobre você -->
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 1°: [Curiosidade 1 — algo inusitado ou marcante sobre você]</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 2°: [Curiosidade 2 — uma experiência ou conquista pessoal]</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 3°: [Curiosidade 3 — habilidade ou característica especial]</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 4°: [Curiosidade 4 — algo sobre sua personalidade ou aptidão]</li>
+                    <li><i class="fa-solid fa-diamond gold-diamond"></i> 5°: [Curiosidade 5 — uma paixão ou interesse marcante]</li>
+                </ul>
+            </div>
+
+            <!-- MOLDE: Texto do botão e mensagem do alert podem ser personalizados no script.js -->
+            <button id="btn-interativo" class="btn-gold-action">BOTÃO INTERATIVO</button>
+        </section>
+
+    </main>
+
+    <section id="hobbies" class="main-wrapper">
+        <div class="center-title-wrapper">
+            <h2 class="global-title">♦ HOBBIES ♦</h2>
+        </div>
+
+        <!-- MOLDE: 5 cards de hobbies — altere o texto de cada "hobby-name" -->
+        <div class="grid-5">
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">[Hobby 1]</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">[Hobby 2]</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">[Hobby 3]</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">[Hobby 4]</span>
+            </div>
+            <div class="card-hobby">
+                <div class="star-icon"><i class="fa-regular fa-star"></i></div>
+                <span class="hobby-name">[Hobby 5]</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-wrapper grid-2">
+
+        <section id="disciplinas" class="content-box">
+            <h2 class="box-title">♦ DISCIPLINAS FAVORITAS ♦</h2>
+            <table class="gold-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">DISCIPLINA</th>
+                        <th class="text-center">POR QUE GOSTO?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- MOLDE: Preencha até 5 linhas com disciplinas e justificativas -->
+                    <tr>
+                        <td class="font-bold">[Nome da disciplina 1]</td>
+                        <td>[Explique em 1-2 frases por que essa disciplina te agrada]</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold">[Nome da disciplina 2]</td>
+                        <td>[Explique em 1-2 frases por que essa disciplina te agrada]</td>
+                    </tr>
+                    <tr>
+                        <td class="font-bold">[Nome da disciplina 3]</td>
+                        <td>[Explique em 1-2 frases por que essa disciplina te agrada]</td>
+                    </tr>
+                    <!-- MOLDE: Linhas vazias de reserva — preencha ou remova conforme necessário -->
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="projetos" class="content-box">
+            <h2 class="box-title">♦ MEUS PROJETOS ♦</h2>
+            <div class="grid-2-internal">
+
+                <!-- MOLDE: Projeto 1 — substitua a imagem, título, descrição e link -->
+                <div class="project-item">
+                    <span class="project-category">[CATEGORIA DO PROJETO 1]</span>
+                    <div class="project-preview">
+                        <!-- MOLDE: Substitua "projeto1.png" pelo nome da sua imagem de preview -->
+                        <img src="[projeto1.png]" alt="[Nome do Projeto 1]" class="project-img">
+                    </div>
+                    <h3 class="project-title-text">[Nome do Projeto 1]</h3>
+                    <p class="project-description">[Descreva brevemente o projeto: o que é, como funciona e qual o objetivo dele.]</p>
+                    <!-- MOLDE: Substitua "#" pela URL real do projeto -->
+                    <a href="#" target="_blank" class="btn-maroon">LINK DO PROJETO</a>
+                </div>
+
+                <!-- MOLDE: Projeto 2 — substitua a imagem, título, descrição e link -->
+                <div class="project-item">
+                    <span class="project-category">[CATEGORIA DO PROJETO 2]</span>
+                    <div class="project-preview">
+                        <!-- MOLDE: Substitua "projeto2.png" pelo nome da sua imagem de preview -->
+                        <img src="[projeto2.png]" alt="[Nome do Projeto 2]" class="project-img">
+                    </div>
+                    <h3 class="project-title-text">[Nome do Projeto 2]</h3>
+                    <p class="project-description">[Descreva brevemente o projeto: o que é, como funciona e qual o objetivo dele.]</p>
+                    <!-- MOLDE: Substitua "#" pela URL real do projeto -->
+                    <a href="#" target="_blank" class="btn-maroon">LINK DO PROJETO</a>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- =====================================================================
+         SEÇÃO: MINHA GANGUE DIGITAL
+         MOLDE: Troque os nomes, ícones (Font Awesome) e papéis dos 5 membros.
+         Ícones disponíveis em: https://fontawesome.com/icons
+    ====================================================================== -->
+    <section id="gangue" class="gang-section">
+        <!-- MOLDE: Substitua "gang-bg.webp" pela sua imagem de fundo em style.css -->
+        <div class="gang-overlay">
+            <div class="main-wrapper">
+                <div class="center-title-wrapper">
+                    <h2 class="global-title">♦ MINHA GANGUE DIGITAL ♦</h2>
+                </div>
+                <div class="grid-5">
+
+                    <div class="gang-member">
+                        <!-- MOLDE: Escolha um ícone Font Awesome que represente o membro -->
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-[icone-1]"></i></div>
+                        <!-- MOLDE: Nome/apelido do membro -->
+                        <h3>Perna longa</h3>
+                        <!-- MOLDE: Papel ou qualidade que esse membro representa -->
+                        <span class="gang-role">Criatividade</span>
+                        <div class="status-indicator"></div>
+                    </div>
+
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-[icone-2]"></i></div>
+                        <h3>Pica-Pau</h3>
+                        <span class="gang-role">Humor</span>
+                        <div class="status-indicator"></div>
+                    </div>
+
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-[icone-3]"></i></div>
+                        <h3>Patolino</h3>
+                        <span class="gang-role">Persistência</span>
+                        <div class="status-indicator"></div>
+                    </div>
+
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-[icone-4]"></i></div>
+                        <h3>Tom</h3>
+                        <span class="gang-role">Trabalho em equipe</span>
+                        <div class="status-indicator"></div>
+                    </div>
+
+                    <div class="gang-member">
+                        <div class="gang-avatar-icon"><i class="fa-solid fa-[icone-5]"></i></div>
+                        <h3>Pantera Cor-de-Rosa</h3>
+                        <span class="gang-role">Elegância no Design</span>
+                        <div class="status-indicator"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="main-footer">
+        <!-- MOLDE: Substitua pelo seu e-mail pessoal -->
+        <div class="footer-segment text-left">
+            <i class="fa-regular fa-envelope footer-mail-icon"></i>
+            <input type="email" class="footer-email-box" value="[seuemail@email.com]" readonly title="Email Pessoal">
+        </div>
+
+        <div class="footer-segment text-center">
+            <!-- MOLDE: Iniciais do seu nome (igual ao topo) -->
+            <div class="logo-badge-footer">[INICIAIS]</div>
+        </div>
+
+        <div class="footer-segment text-right">
+            <!-- MOLDE: Substitua os href pelos links reais das suas redes sociais -->
+            <a href="[URL_GITHUB]" target="_blank" class="footer-social"><i class="fa-brands fa-github"></i></a>
+            <a href="[URL_LINKEDIN]" target="_blank" class="footer-social"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="[URL_INSTAGRAM]" target="_blank" class="footer-social"><i class="fa-brands fa-instagram"></i></a>
+
+            <!-- MOLDE: Easter egg — altere o title para o seu e-mail institucional -->
+            <div id="easter-egg-btn" class="footer-extra-box" title="[Email institucional, ex: nome@faculdade.edu.br]"></div>
+        </div>
+    </footer>
+
+    <!-- MOLDE: Easter egg — substitua "easter-egg.png" pela sua imagem surpresa -->
+    <div id="easter-egg-modal" class="modal-overlay">
+        <div class="modal-container">
+            <span id="close-modal" class="modal-close-btn">&times;</span>
+            <img src="[easter-egg.png]" alt="Easter Egg" class="modal-img">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
